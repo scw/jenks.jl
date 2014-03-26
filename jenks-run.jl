@@ -5,9 +5,8 @@ include("jenks.jl")
 
 # load sample data
 f = open("test.json")
-data = JSON.parse(f)
+data = convert(Vector{Float64}, JSON.parse(f))
 
 # test runtime
-@time begin
-  jenks(data, 5)
-end
+jenks(data, 5)
+@time jenks(data, 5)
