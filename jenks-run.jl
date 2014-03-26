@@ -5,8 +5,11 @@ include("jenks.jl")
 
 # load sample data
 f = open("test.json")
-data = convert(Vector{Float64}, JSON.parse(f))
+data = JSON.parse(f)
 
-# test runtime
-jenks(data, 5)
-@time jenks(data, 5)
+dc = Jenks.DataClassification(data,5)
+
+# run once to exclude compilation time from runtime test
+Jenks.jenks(dc)
+# examine runtime
+@time Jenks.jenks(dc)
