@@ -69,7 +69,8 @@ module Jenks
     return lower_class_limits, variance_combinations
   end
 
-  function jenks(dc::DataClassification)
+  function jenks(data, n_classes)
+    dc = Jenks.DataClassification(data, n_classes)
     if dc.n_classes > length(dc.data)
       return
     end

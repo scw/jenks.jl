@@ -7,9 +7,8 @@ include("jenks.jl")
 f = open("test.json")
 data = JSON.parse(f)
 
-dc = Jenks.DataClassification(data,5)
-
 # run once to exclude compilation time from runtime test
-Jenks.jenks(dc)
+Jenks.jenks(data, 5)
 # examine runtime
-@time Jenks.jenks(dc)
+@time Jenks.jenks(data, 5)
+
